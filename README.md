@@ -14,5 +14,5 @@ git add .
 git commit -m"Prep heroku deployment"
 git push heroku master
 
-# Seed my database by piping a sql file into postgres (you may not need this if you have your seeds in your revisions)
+# Seed my database by piping a sql file into postgres (you may not need this if you have your seeds in your revisions, seeding from the deployed app, doing some other method, etc.)
 cat ../flask_prod/heroku_seeds.sql | heroku pg:psql -a fruitnodocker

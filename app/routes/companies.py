@@ -8,7 +8,8 @@ bp = Blueprint("companies", __name__, url_prefix='/api/companies')
 
 @bp.route('')
 @require_auth
-def index():
+def index(authorized_user):
+  print(authorized_user.to_dict())
   companies = Company.query.all()
   companies = [company.to_dict() for company in companies]
 
@@ -20,7 +21,7 @@ def index():
 
 @bp.route('/<int:companyId>')
 @require_auth
-def company_items_by_type(companyId):
+def company_items_by_type(companyId, authorized_user):
   company = Company.query.options(joinedload('items')).get(companyId)
   
   items = [item.to_dict() for item in company.items]
